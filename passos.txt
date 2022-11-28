@@ -1,0 +1,76 @@
+verificar a versão do python 
+
+criar um ambiente virtual python: vê o vídeo https://www.youtube.com/watch?v=lSOrdnMMDe8
+
+entrar na pasta venv: .\venv\Scripts\Activate.ps1
+
+instalar o django: pip install django
+
+verificar a versão do django:  python -m django --version
+
+guardar as dependencias pip freeze > requeriments.txt
+
+criar primeiro projeto: django-admin startproject (nome do projeto projeto1)
+
+fazer aas configurações dos setings
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+"DIRS": ['templates'],
+
+criar o app: python manage.py startapp (Nome do app app1)
+
+no app criar a pasta templates e um arquivo urls.py
+
+path include
+na url do projeto incluir path('app1(nome do app)',include('app1.urls')),
+
+na url do app fazer o importe e colocar o index
+from django.urls import path
+
+from.views import index
+
+urlpatterns = [
+    path('', index, name='index'),
+]
+
+views do app criar o index
+
+from django.http import HttpResponse
+
+def index(request):
+    return HttpResponse("Hello World!")
+
+Criar os models
+    
+# Create your models here.
+class User(models.Model):
+    mome = models.CharField('nome',max_length=30)
+    telefone = models.IntegerField('telefone')
+    email = models.CharField('email',max_length=30)
+
+    def __str__(self):
+        return f"Nome: {self.nome}, Telefone: {self.telefone}, Email: {self.email}"
+
+criar as migraçoes
+python manage.py makemigrations
+depois dá o comando
+python manage.py migrate
+
+entrar no python shell
+python manage.py shell
+
+form app1.models import User
+User.objects.all()
+
+
+Criar super User
+python manage.py createsuperuser
+
+registar o model no admin
+
+Criar templates
+pasta user dentro da pasta criar index.html
+
+nas views trocar a respota 
+
+
