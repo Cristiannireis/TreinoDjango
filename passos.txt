@@ -73,4 +73,16 @@ pasta user dentro da pasta criar index.html
 
 nas views trocar a respota 
 
+Criar forms
+from django import forms
+from .models import User
+
+# modelForm
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['nome', 'telefone', 'email']
+
+
 
